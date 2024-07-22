@@ -1,6 +1,22 @@
 import create from 'zustand';
 
-export const useStore = create((set) => ({
+interface Article {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface AppState {
+  articles: Article[];
+  setArticles: (articles: Article[]) => void;
+  addArticle: (article: Omit<Article, 'id'>) => void;
+}
+
+export const useStore = create<AppState>((set) => ({
   articles: [],
-  setArticles: (newArticles) => set({ articles: newArticles }),
+  setArticles: (articles) => set({ articles }),
+  addArticle: (article) =>
+    set((state) => ({
+      articles: [...state.articles, { ...article, id: Date.now() }],
+    })),
 }));
