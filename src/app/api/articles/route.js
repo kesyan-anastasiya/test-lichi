@@ -1,12 +1,12 @@
-const Article = require('../../../models/Article');
+const {Article} = require('../../../../db/models');
 
 export async function POST(req) {
-  const { title, content } = await req.json();
+  const { title, description } = await req.json();
 
   try {
     const newArticle = await Article.create({
       title,
-      content,
+      description,
     });
 
     return new Response(JSON.stringify(newArticle), {
@@ -16,6 +16,7 @@ export async function POST(req) {
       },
     });
   } catch (error) {
+    console.error(error);
     return new Response(JSON.stringify({ error: 'Failed to create article' }), {
       status: 500,
       headers: {
