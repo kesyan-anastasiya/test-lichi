@@ -1,15 +1,15 @@
-import { FC } from 'react';
+import React from 'react';
 
-interface CardProps {
+interface ArticleCardProps {
   title: string;
   description: string;
   onClick: () => void;
 }
 
-const ArticleCard: FC<CardProps> = ({ title, description, onClick }) => (
-  <div className="bg-white rounded-lg shadow p-4 mb-4 cursor-pointer" onClick={onClick}>
-    <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <p className="text-gray-700">{description}</p>
+const ArticleCard: React.FC<ArticleCardProps> = ({ title, description, onClick }) => (
+  <div onClick={onClick} className="border p-4 mb-4 cursor-pointer">
+    <h2 className="text-2xl font-bold">{title}</h2>
+    <p>{description}</p>
   </div>
 );
 

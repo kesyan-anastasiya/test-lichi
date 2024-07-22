@@ -1,17 +1,19 @@
-import { FC, InputHTMLAttributes } from "react";
+import React from 'react';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps {
   label: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: FC<InputProps> = ({ label, ...props }) => (
+const Input: React.FC<InputProps> = ({ label, value, onChange }) => (
   <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2">
-      {label}
-    </label>
+    <label className="block text-sm font-medium mb-1">{label}</label>
     <input
-      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      {...props}
+      type="text"
+      value={value}
+      onChange={onChange}
+      className="w-full p-2 border rounded"
     />
   </div>
 );
