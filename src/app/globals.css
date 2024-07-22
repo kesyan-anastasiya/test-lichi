@@ -30,4 +30,13 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  .navbar {
+    background-color: rgb(var(--background-end-rgb));
+    color: rgb(var(--foreground-rgb));
+  }
+
+  .navbar-link:hover {
+    color: rgb(var(--foreground-rgb, 70%));
+  }
 }
